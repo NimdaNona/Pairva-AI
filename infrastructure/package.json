@@ -1,0 +1,40 @@
+{
+  "name": "perfect-match-infrastructure",
+  "version": "1.0.0",
+  "description": "AWS CDK Infrastructure for Perfect Match",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "deploy": "cdk deploy",
+    "deploy:dev": "cdk deploy --context environment=dev",
+    "deploy:staging": "cdk deploy --context environment=staging",
+    "deploy:prod": "cdk deploy --context environment=prod",
+    "diff": "cdk diff",
+    "synth": "cdk synth"
+  },
+  "keywords": [
+    "aws",
+    "cdk",
+    "infrastructure",
+    "perfect-match"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "aws-cdk": "^2.121.0",
+    "aws-cdk-lib": "^2.188.0",
+    "constructs": "^10.4.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}

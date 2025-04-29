@@ -1,0 +1,117 @@
+version: '3.8'
+
+services:
+  # PostgreSQL for structured data (users, profiles, matches, etc.)
+  postgres:
+    image: postgres:14-alpine
+    container_name: perfect-match-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: perfectmatch
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MongoDB for flexible schema data (questionnaire responses)
+  mongodb:
+    image: mongo:5
+    container_name: perfect-match-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  # Redis for caching and session management
+  redis:
+    image: redis:7-alpine
+    container_name: perfect-match-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API service
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: perfect-match-api
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      # PostgreSQL
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DATABASE: perfectmatch
+      POSTGRES_SYNCHRONIZE: 'true'
+      # MongoDB
+      MONGODB_URI: mongodb://mongo:mongo@mongodb:27017/perfectmatch?authSource=admin
+      # Redis
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      # JWT
+      JWT_SECRET: development-jwt-secret
+      # OpenAI - Uncomment and add your key for local development
+      # OPENAI_API_KEY: your-api-key-here
+      # S3 Buckets (using localstack in development)
+      S3_MEDIA_BUCKET: perfect-match-media-dev
+      S3_ASSETS_BUCKET: perfect-match-assets-dev
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run start:dev
+
+  # Frontend web application
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: perfect-match-web
+    ports:
+      - "3001:3000"
+    depends_on:
+      - api
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_API_URL: http://localhost:3000/api/v1
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev
+
+volumes:
+  postgres_data:
+  mongo_data:
+  redis_data:

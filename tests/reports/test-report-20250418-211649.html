@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Match Core Flow Test Report</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #0066cc;
+        }
+        .summary {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .flow-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .flow-card {
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            width: calc(33% - 15px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success-rate {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .success-indicator {
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .test-details {
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #0066cc;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .pass {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .fail {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .duration {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .chart {
+            width: 48%;
+            height: 300px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .environment {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Perfect Match Core Flow Test Report</h1>
+    <p>Generated on 2025-04-18 21:17:50 | Environment: dev (Simulation Mode)</p>
+    
+    <div class="summary">
+        <h2>Overall Summary</h2>
+        <p>Total Tests: <strong>57</strong> | Passed: <strong>57</strong> | Failed: <strong>0</strong> | Skipped: <strong>0</strong></p>
+        <p>Overall Success Rate: <strong>100%</strong></p>
+        <p>Total Duration: <strong>00:01:01.079</strong></p>
+    </div>
+    
+    <h2>Flow Summaries</h2>
+    <div class="flow-summary">        <div class="flow-card">
+            <h3>Authentication</h3>
+            <div class="success-rate">100%</div>
+            <div class="success-indicator" style="background-color: #4caf50;"></div>
+            <p>Tests: <strong>10</strong> | Passed: <strong>10</strong> | Failed: <strong>0</strong></p>
+            <p class="duration">Duration: 6.018 seconds</p>
+        </div>        <div class="flow-card">
+            <h3>Profile</h3>
+            <div class="success-rate">100%</div>
+            <div class="success-indicator" style="background-color: #4caf50;"></div>
+            <p>Tests: <strong>15</strong> | Passed: <strong>15</strong> | Failed: <strong>0</strong></p>
+            <p class="duration">Duration: 13.734 seconds</p>
+        </div>        <div class="flow-card">
+            <h3>Questionnaire</h3>
+            <div class="success-rate">100%</div>
+            <div class="success-indicator" style="background-color: #4caf50;"></div>
+            <p>Tests: <strong>10</strong> | Passed: <strong>10</strong> | Failed: <strong>0</strong></p>
+            <p class="duration">Duration: 11.754 seconds</p>
+        </div>        <div class="flow-card">
+            <h3>Matching</h3>
+            <div class="success-rate">100%</div>
+            <div class="success-indicator" style="background-color: #4caf50;"></div>
+            <p>Tests: <strong>15</strong> | Passed: <strong>15</strong> | Failed: <strong>0</strong></p>
+            <p class="duration">Duration: 21.433 seconds</p>
+        </div>        <div class="flow-card">
+            <h3>Messaging</h3>
+            <div class="success-rate">100%</div>
+            <div class="success-indicator" style="background-color: #4caf50;"></div>
+            <p>Tests: <strong>2</strong> | Passed: <strong>2</strong> | Failed: <strong>0</strong></p>
+            <p class="duration">Duration: 2.482 seconds</p>
+        </div>        <div class="flow-card">
+            <h3>Subscription</h3>
+            <div class="success-rate">100%</div>
+            <div class="success-indicator" style="background-color: #4caf50;"></div>
+            <p>Tests: <strong>5</strong> | Passed: <strong>5</strong> | Failed: <strong>0</strong></p>
+            <p class="duration">Duration: 5.376 seconds</p>
+        </div>    </div>
+    
+    <h2>Test Details</h2>
+    <div class="test-details">        <h3>Authentication Tests</h3>
+        <table>
+            <tr>
+                <th>Test Name</th>
+                <th>Status</th>
+                <th>Duration (s)</th>
+                <th>Details</th>
+            </tr>            <tr>
+                <td>User Login (daniel.robinson@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.669</td>
+                <td></td>
+            </tr>            <tr>
+                <td>User Login (charlottepatel@gmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.465</td>
+                <td></td>
+            </tr>            <tr>
+                <td>User Login (aishasmith286@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.652</td>
+                <td></td>
+            </tr>            <tr>
+                <td>User Login (achen@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.382</td>
+                <td></td>
+            </tr>            <tr>
+                <td>User Login (williamgupta9226@yahoo.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.841</td>
+                <td></td>
+            </tr>            <tr>
+                <td>User Login (milajackson@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.393</td>
+                <td></td>
+            </tr>            <tr>
+                <td>User Login (haydenivanov1816@hotmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.918</td>
+                <td></td>
+            </tr>            <tr>
+                <td>User Login (emilia.harris@hotmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.476</td>
+                <td></td>
+            </tr>            <tr>
+                <td>User Login (averyrivera@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.507</td>
+                <td></td>
+            </tr>            <tr>
+                <td>User Login (charlies@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.678</td>
+                <td></td>
+            </tr>        </table>        <h3>Profile Tests</h3>
+        <table>
+            <tr>
+                <th>Test Name</th>
+                <th>Status</th>
+                <th>Duration (s)</th>
+                <th>Details</th>
+            </tr>            <tr>
+                <td>Create Profile (daniel.robinson@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.682</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Create Profile (charlottepatel@gmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.474</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Create Profile (aishasmith286@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.340</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Create Profile (achen@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.333</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Create Profile (williamgupta9226@yahoo.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.512</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Create Profile (milajackson@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.429</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Create Profile (haydenivanov1816@hotmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.079</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Create Profile (emilia.harris@hotmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.612</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Create Profile (averyrivera@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.159</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Create Profile (charlies@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.106</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Update Profile (daniel.robinson@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.966</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Update Profile (charlottepatel@gmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.328</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Update Profile (aishasmith286@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.425</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Update Profile (achen@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.867</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Update Profile (williamgupta9226@yahoo.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.348</td>
+                <td></td>
+            </tr>        </table>        <h3>Questionnaire Tests</h3>
+        <table>
+            <tr>
+                <th>Test Name</th>
+                <th>Status</th>
+                <th>Duration (s)</th>
+                <th>Details</th>
+            </tr>            <tr>
+                <td>Submit Questionnaire (daniel.robinson@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.025</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Submit Questionnaire (charlottepatel@gmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.790</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Submit Questionnaire (aishasmith286@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.658</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Submit Questionnaire (achen@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.998</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Submit Questionnaire (williamgupta9226@yahoo.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.741</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Submit Questionnaire (milajackson@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.217</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Submit Questionnaire (haydenivanov1816@hotmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.947</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Submit Questionnaire (emilia.harris@hotmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.264</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Submit Questionnaire (averyrivera@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.953</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Submit Questionnaire (charlies@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.108</td>
+                <td></td>
+            </tr>        </table>        <h3>Matching Tests</h3>
+        <table>
+            <tr>
+                <th>Test Name</th>
+                <th>Status</th>
+                <th>Duration (s)</th>
+                <th>Details</th>
+            </tr>            <tr>
+                <td>Generate Matches (daniel.robinson@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>2.216</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Generate Matches (charlottepatel@gmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.362</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Generate Matches (aishasmith286@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>2.092</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Generate Matches (achen@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>2.015</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Generate Matches (williamgupta9226@yahoo.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.801</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Generate Matches (milajackson@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.616</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Generate Matches (haydenivanov1816@hotmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.961</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Generate Matches (emilia.harris@hotmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.060</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Generate Matches (averyrivera@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>2.460</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Generate Matches (charlies@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.910</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Like/Unlike Matches (daniel.robinson@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.774</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Like/Unlike Matches (charlottepatel@gmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.393</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Like/Unlike Matches (aishasmith286@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.571</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Like/Unlike Matches (achen@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.253</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Like/Unlike Matches (williamgupta9226@yahoo.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.907</td>
+                <td></td>
+            </tr>        </table>        <h3>Messaging Tests</h3>
+        <table>
+            <tr>
+                <th>Test Name</th>
+                <th>Status</th>
+                <th>Duration (s)</th>
+                <th>Details</th>
+            </tr>            <tr>
+                <td>Exchange Messages (daniel.robinson@icloud.com <-> charlottepatel@gmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.438</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Exchange Messages (aishasmith286@outlook.com <-> achen@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.023</td>
+                <td></td>
+            </tr>        </table>        <h3>Subscription Tests</h3>
+        <table>
+            <tr>
+                <th>Test Name</th>
+                <th>Status</th>
+                <th>Duration (s)</th>
+                <th>Details</th>
+            </tr>            <tr>
+                <td>Update Subscription Plan (daniel.robinson@icloud.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.208</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Update Subscription Plan (charlottepatel@gmail.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.883</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Update Subscription Plan (aishasmith286@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.407</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Update Subscription Plan (achen@outlook.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>0.853</td>
+                <td></td>
+            </tr>            <tr>
+                <td>Update Subscription Plan (williamgupta9226@yahoo.com)</td>
+                <td><span class="status pass">PASS</span></td>
+                <td>1.009</td>
+                <td></td>
+            </tr>        </table>    </div>
+    
+    <div class="environment">
+        <h3>Environment Details</h3>
+        <p><strong>API Base URL:</strong> https://api.perfectmatch.local</p>
+        <p><strong>Environment:</strong> dev</p>
+        <p><strong>Simulation Mode:</strong> Enabled</p>
+        <p><strong>Test Users:</strong> 10 users from ./test-users.json</p>
+        <p><strong>Log File:</strong> C:\Projects\Perfect-Match/test-core-flows-20250418-211649.log</p>
+    </div>
+</body>
+</html>

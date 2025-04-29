@@ -1,0 +1,77 @@
+{
+  "family": "pairva-backend",
+  "executionRoleArn": "arn:aws:iam::039612856036:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::039612856036:role/pairvaBackendTaskRole",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "pairva-backend",
+      "image": "039612856036.dkr.ecr.us-east-1.amazonaws.com/pairva-backend:20250423-1",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "hostPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        { "name": "NODE_ENV", "value": "production" },
+        { "name": "PORT", "value": "3000" },
+        { "name": "API_URL", "value": "https://api.pairva.ai" },
+        { "name": "FRONTEND_URL", "value": "https://www.pairva.ai" }
+      ],
+      "secrets": [
+        { "name": "DB_HOST", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/host" },
+        { "name": "DB_PORT", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/port" },
+        { "name": "DB_NAME", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/name" },
+        { "name": "DB_USER", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/user" },
+        { "name": "DB_PASSWORD", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/password" },
+        { "name": "MONGO_URI", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/mongo/uri" },
+        { "name": "REDIS_URL", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/redis/url" },
+        { "name": "JWT_SECRET", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/jwt/secret" },
+        { "name": "AWS_S3_BUCKET", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/s3/bucket" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/pairva-backend",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs",
+          "awslogs-create-group": "true"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost:3000/api/health || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      },
+      "ulimits": [
+        {
+          "name": "nofile",
+          "softLimit": 65536,
+          "hardLimit": 65536
+        }
+      ]
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "2048",
+  "tags": [
+    {
+      "key": "Environment",
+      "value": "Production"
+    },
+    {
+      "key": "Service",
+      "value": "Backend"
+    },
+    {
+      "key": "Application",
+      "value": "Pairva"
+    }
+  ]
+}

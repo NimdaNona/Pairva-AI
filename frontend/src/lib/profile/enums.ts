@@ -1,0 +1,211 @@
+/**
+ * Gender enum - matches backend ProfileEntity
+ */
+export enum Gender {
+  MALE = 'male',
+  FEMALE = 'female',
+  NON_BINARY = 'non_binary',
+  OTHER = 'other',
+  PREFER_NOT_TO_SAY = 'prefer_not_to_say',
+}
+
+/**
+ * Relationship goal enum - matches backend ProfileEntity
+ */
+export enum RelationshipGoal {
+  FRIENDSHIP = 'friendship',
+  CASUAL_DATING = 'casual_dating',
+  SERIOUS_RELATIONSHIP = 'serious_relationship',
+  MARRIAGE = 'marriage',
+  NOT_SURE = 'not_sure',
+}
+
+/**
+ * Relationship status enum - matches backend ProfileEntity
+ */
+export enum RelationshipStatus {
+  SINGLE = 'single',
+  DIVORCED = 'divorced',
+  SEPARATED = 'separated',
+  WIDOWED = 'widowed',
+  COMPLICATED = 'complicated',
+}
+
+/**
+ * Predefined personality traits for profile attributes
+ */
+export const PERSONALITY_TRAITS = [
+  'Adventurous',
+  'Analytical',
+  'Artistic',
+  'Athletic',
+  'Calm',
+  'Caring',
+  'Charismatic',
+  'Compassionate',
+  'Confident',
+  'Creative',
+  'Curious',
+  'Disciplined',
+  'Empathetic',
+  'Energetic',
+  'Extroverted',
+  'Friendly',
+  'Funny',
+  'Generous',
+  'Honest',
+  'Imaginative',
+  'Independent',
+  'Intellectual',
+  'Introverted',
+  'Kind',
+  'Logical',
+  'Loyal',
+  'Optimistic',
+  'Organized',
+  'Outgoing',
+  'Patient',
+  'Passionate',
+  'Persistent',
+  'Practical',
+  'Reliable',
+  'Resourceful',
+  'Romantic',
+  'Sensitive',
+  'Sincere',
+  'Spontaneous',
+  'Thoughtful',
+];
+
+/**
+ * Predefined values for profile attributes
+ */
+export const VALUES = [
+  'Adventure',
+  'Ambition',
+  'Authenticity',
+  'Balance',
+  'Community',
+  'Compassion',
+  'Connection',
+  'Creativity',
+  'Education',
+  'Family',
+  'Financial security',
+  'Freedom',
+  'Friendship',
+  'Growth',
+  'Happiness',
+  'Harmony',
+  'Health',
+  'Honesty',
+  'Humility',
+  'Independence',
+  'Innovation',
+  'Integrity',
+  'Justice',
+  'Kindness',
+  'Knowledge',
+  'Leadership',
+  'Learning',
+  'Nature',
+  'Openness',
+  'Optimism',
+  'Passion',
+  'Peace',
+  'Privacy',
+  'Recognition',
+  'Religion',
+  'Responsibility',
+  'Security',
+  'Self-expression',
+  'Service',
+  'Spirituality',
+  'Stability',
+  'Success',
+  'Tradition',
+  'Travel',
+  'Trust',
+];
+
+/**
+ * Predefined lifestyle attributes
+ */
+export const LIFESTYLE_ATTRIBUTES = [
+  'Active',
+  'Animal lover',
+  'City dweller',
+  'Coffee enthusiast',
+  'Collector',
+  'Cook',
+  'Cosmopolitan',
+  'Countryside lover',
+  'Craft beer enthusiast',
+  'Dancer',
+  'Early riser',
+  'Entrepreneur',
+  'Environmentalist',
+  'Fashionista',
+  'Fitness enthusiast',
+  'Foodie',
+  'Freelancer',
+  'Gamer',
+  'Gardener',
+  'Homebody',
+  'Language learner',
+  'Minimalist',
+  'Music lover',
+  'Night owl',
+  'Non-drinker',
+  'Non-smoker',
+  'Outdoor enthusiast',
+  'Parent',
+  'Pet owner',
+  'Photographer',
+  'Plant parent',
+  'Reader',
+  'Remote worker',
+  'Runner',
+  'Skier',
+  'Student',
+  'Tea enthusiast',
+  'Techie',
+  'Traveler',
+  'Vegan',
+  'Vegetarian',
+  'Volunteer',
+  'Wine enthusiast',
+  'Yogi',
+];
+
+/**
+ * Predefined communication style attributes
+ */
+export const COMMUNICATION_STYLES = [
+  'Active listener',
+  'Assertive',
+  'Careful with words',
+  'Conflict-avoidant',
+  'Debater',
+  'Detailed',
+  'Direct',
+  'Diplomatic',
+  'Emotionally expressive',
+  'Empathetic listener',
+  'Encouraging',
+  'Factual',
+  'Humorous',
+  'Indirect',
+  'Logical',
+  'Open',
+  'Passionate',
+  'Problem-solver',
+  'Reflective',
+  'Reserved',
+  'Sarcastic',
+  'Storyteller',
+  'Straight to the point',
+  'Supportive',
+  'Talkative',
+  'Thoughtful',
+];

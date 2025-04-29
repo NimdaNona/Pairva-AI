@@ -1,0 +1,103 @@
+# Environment files
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.dev
+.env.staging
+.env.prod
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+yarn.lock
+
+# TypeScript
+*.tsbuildinfo
+dist/
+build/
+out/
+
+# AWS CDK
+.cdk.staging/
+cdk.out/
+cdk.context.json
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Testing
+.nyc_output
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IDE - JetBrains
+.idea/
+*.iml
+*.iws
+*.ipr
+*.iws
+.idea_modules/
+
+# IDE - Others
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Temp directories
+temp/
+tmp/
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Auth & Secrets
+*.pem
+*.key
+
+# Backend specific
+backend/dist/
+backend/build/
+backend/node_modules/
+
+# Frontend specific
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.vercel
+frontend/.env
+frontend/.env.*
+
+# Misc
+.cache/
+.eslintcache
+*.gz
+*.tgz
