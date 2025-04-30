@@ -24,21 +24,21 @@ For a detailed overview of the infrastructure architecture, see [INFRASTRUCTURE.
 
 1. Install dependencies:
 
-```bash
+```powershell
 npm install
 ```
 
 2. Copy the appropriate environment file for your target environment:
 
-```bash
+```powershell
 # For development
-cp .env.dev .env
+Copy-Item -Path .env.dev -Destination .env -Force
 
 # For staging
-cp .env.staging .env
+Copy-Item -Path .env.staging -Destination .env -Force
 
 # For production
-cp .env.prod .env
+Copy-Item -Path .env.prod -Destination .env -Force
 ```
 
 3. Edit the `.env` file to update any environment-specific configurations, especially:
@@ -53,7 +53,7 @@ cp .env.prod .env
 
 Before deploying CDK stacks for the first time in an AWS account/region, you need to bootstrap the environment:
 
-```bash
+```powershell
 cdk bootstrap aws://ACCOUNT-NUMBER/REGION
 ```
 
@@ -61,7 +61,7 @@ cdk bootstrap aws://ACCOUNT-NUMBER/REGION
 
 To review the CloudFormation templates that will be generated:
 
-```bash
+```powershell
 cdk synth
 ```
 
@@ -71,7 +71,7 @@ This will generate the CloudFormation templates in the `cdk.out` directory witho
 
 To deploy all stacks to the specified environment:
 
-```bash
+```powershell
 # Deploy to development (default)
 cdk deploy --all --context environment=dev
 
@@ -86,16 +86,16 @@ cdk deploy --all --context environment=prod
 
 To deploy specific stacks only:
 
-```bash
+```powershell
 # Example: Deploy only network and data stacks
-cdk deploy perfect-match-dev-network perfect-match-dev-data
+cdk deploy perfect-match-dev-network,perfect-match-dev-data
 ```
 
 ### Compare Changes Before Deployment
 
 To see what changes will be made before deploying:
 
-```bash
+```powershell
 cdk diff
 ```
 
@@ -103,7 +103,7 @@ cdk diff
 
 To remove all deployed resources (use with caution, especially in production):
 
-```bash
+```powershell
 cdk destroy --all
 ```
 

@@ -6,7 +6,7 @@
   "containerDefinitions": [
     {
       "name": "pairva-backend",
-      "image": "039612856036.dkr.ecr.us-east-1.amazonaws.com/pairva-backend:20250423-1",
+      "image": "039612856036.dkr.ecr.us-east-1.amazonaws.com/pairva-backend:20250430-fix2",
       "essential": true,
       "portMappings": [
         {
@@ -16,21 +16,68 @@
         }
       ],
       "environment": [
-        { "name": "NODE_ENV", "value": "production" },
-        { "name": "PORT", "value": "3000" },
-        { "name": "API_URL", "value": "https://api.pairva.ai" },
-        { "name": "FRONTEND_URL", "value": "https://www.pairva.ai" }
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "name": "PORT",
+          "value": "3000"
+        },
+        {
+          "name": "API_URL",
+          "value": "https://api.pairva.ai"
+        },
+        {
+          "name": "FRONTEND_URL",
+          "value": "https://www.pairva.ai"
+        },
+        {
+          "name": "LANG",
+          "value": "en_US.UTF-8"
+        },
+        {
+          "name": "LC_ALL",
+          "value": "en_US.UTF-8"
+        }
       ],
       "secrets": [
-        { "name": "DB_HOST", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/host" },
-        { "name": "DB_PORT", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/port" },
-        { "name": "DB_NAME", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/name" },
-        { "name": "DB_USER", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/user" },
-        { "name": "DB_PASSWORD", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/password" },
-        { "name": "MONGO_URI", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/mongo/uri" },
-        { "name": "REDIS_URL", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/redis/url" },
-        { "name": "JWT_SECRET", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/jwt/secret" },
-        { "name": "AWS_S3_BUCKET", "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/s3/bucket" }
+        {
+          "name": "DB_HOST",
+          "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/host"
+        },
+        {
+          "name": "DB_PORT",
+          "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/port"
+        },
+        {
+          "name": "DB_NAME",
+          "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/name"
+        },
+        {
+          "name": "DB_USER",
+          "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/user"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/db/password"
+        },
+        {
+          "name": "MONGO_URI",
+          "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/mongo/uri"
+        },
+        {
+          "name": "REDIS_URL",
+          "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/redis/url"
+        },
+        {
+          "name": "JWT_SECRET",
+          "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/jwt/secret"
+        },
+        {
+          "name": "AWS_S3_BUCKET",
+          "valueFrom": "arn:aws:ssm:us-east-1:039612856036:parameter/pairva/prod/s3/bucket"
+        }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
@@ -42,11 +89,14 @@
         }
       },
       "healthCheck": {
-        "command": ["CMD-SHELL", "curl -f http://localhost:3000/api/health || exit 1"],
+        "command": [
+          "CMD-SHELL",
+          "curl -f http://localhost:3000/api/health || exit 1"
+        ],
         "interval": 30,
-        "timeout": 5,
-        "retries": 3,
-        "startPeriod": 60
+        "timeout": 15,
+        "retries": 7,
+        "startPeriod": 180
       },
       "ulimits": [
         {
@@ -57,7 +107,9 @@
       ]
     }
   ],
-  "requiresCompatibilities": ["FARGATE"],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "cpu": "1024",
   "memory": "2048",
   "tags": [
@@ -73,5 +125,7 @@
       "key": "Application",
       "value": "Pairva"
     }
-  ]
+  ],
+  "volumes": [],
+  "placementConstraints": []
 }

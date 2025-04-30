@@ -1,0 +1,161 @@
+#Update-TaskDefinitions.ps1 Output
+
+VERBOSE: Getting AWS account information...
+VERBOSE: AWS Account ID: 039612856036
+VERBOSE: AWS Region: us-east-1
+AWS Account ID: 039612856036
+AWS Region: us-east-1
+Version: 1.0.2
+Verifying IAM roles...
+Checking if IAM role exists: ecsTaskExecutionRole
+  Role already exists
+  Attaching required policies to Task Execution Role
+
+An error occurred (NoSuchEntity) when calling the AttachRolePolicy operation: Policy arn:aws:iam::aws:policy/AmazonECR-FullAccess does not exist or is not attachable.
+  Attached ECR Policy
+  Updated inline policy with specific permissions
+Checking if IAM role exists: pairvaBackendTaskRole
+  Role already exists
+Checking if IAM role exists: pairvaFrontendTaskRole
+  Role already exists
+Verifying CloudWatch log groups...
+Checking if log group exists: /ecs/pairva-backend
+  Log group already exists
+
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+
+aws.exe: error: ambiguous option: --log-group-name could match --log-group-name-prefix, --log-group-name-pattern
+
+  Updating retention policy to 30 days
+Checking if log group exists: /ecs/pairva-frontend
+  Log group already exists
+
+usage: aws [options] <command> <subcommand> [<subcommand> ...] [parameters]
+To see help text, you can run:
+
+  aws help
+  aws <command> help
+  aws <command> <subcommand> help
+
+aws.exe: error: ambiguous option: --log-group-name could match --log-group-name-prefix, --log-group-name-pattern
+
+  Updating retention policy to 30 days
+Verifying ECR repositories...
+Checking if ECR repository exists: pairva-backend
+  ECR repository already exists
+Checking if ECR repository exists: pairva-frontend
+  ECR repository already exists
+Verifying Docker images in ECR...
+Checking if image exists in ECR: pairva-backend (tag: 1.0.2)
+  Image exists in ECR: pairva-backend (tag: 1.0.2)
+  Size: 124.9 MB, Pushed at: 04/30/2025 11:17:51
+Checking if image exists in ECR: pairva-frontend (tag: 1.0.2)
+  Image exists in ECR: pairva-frontend (tag: 1.0.2)
+  Size: 292.97 MB, Pushed at: 04/30/2025 11:17:54
+Verifying ECS cluster...
+Checking if ECS cluster exists: pairva-cluster
+  ECS cluster already exists and is active
+  Setting default capacity provider strategy
+  Updated default capacity provider strategy
+
+Verifying network configuration...
+Verifying network configuration...
+Checking if VPC 'pairva-vpc' exists...
+  ❌ VPC not found
+❌ Network configuration has issues that need to be fixed
+
+Processing backend task definition...
+Processing task definition: C:\Projects\Perfect-Match\infrastructure\task-definitions\backend-task-def.json
+  AWS Account ID: 039612856036
+  AWS Region: us-east-1
+  Version: 1.0.2
+  Updating health check configuration for container: pairva-backend
+  ✅ Backend health check endpoint is correct: /api/health
+  Updated health check configuration:
+    - Timeout: 15 seconds (was 10)
+    - Retries: 7 attempts (was 5)
+    - Start Period: 180 seconds (was 120)
+    - Interval: 30 seconds (unchanged)
+Processed task definition saved to: C:\Projects\Perfect-Match\infrastructure\task-definitions\backend-task-def-prepared.json
+
+Processing frontend task definition...
+Processing task definition: C:\Projects\Perfect-Match\infrastructure\task-definitions\frontend-task-def.json
+  AWS Account ID: 039612856036
+  AWS Region: us-east-1
+  Version: 1.0.2
+  Updating health check configuration for container: pairva-frontend
+  ✅ Frontend health check endpoint is correct: /health
+  Updated health check configuration:
+    - Timeout: 15 seconds (was 10)
+    - Retries: 7 attempts (was 5)
+    - Start Period: 180 seconds (was 120)
+    - Interval: 30 seconds (unchanged)
+Processed task definition saved to: C:\Projects\Perfect-Match\infrastructure\task-definitions\frontend-task-def-prepared.json
+
+Verifying Fargate compatibility and service configurations...
+Validating ECS service configuration in task definition: C:\Projects\Perfect-Match\infrastructure\task-definitions\backend-task-def-prepared.json
+  ✅ Network mode is correctly set to 'awsvpc'
+  ✅ Valid CPU (1024) and memory (2048) configuration for Fargate
+  ✅ Task definition correctly specifies 'FARGATE' compatibility
+  ✅ Task definition includes 'executionRoleArn'
+  ✅ ECS service configuration is valid for Fargate
+Validating ECS service configuration in task definition: C:\Projects\Perfect-Match\infrastructure\task-definitions\frontend-task-def-prepared.json
+  ✅ Network mode is correctly set to 'awsvpc'
+  ✅ Valid CPU (1024) and memory (2048) configuration for Fargate
+  ✅ Task definition correctly specifies 'FARGATE' compatibility
+  ✅ Task definition includes 'executionRoleArn'
+  ✅ ECS service configuration is valid for Fargate
+
+Verifying health check configurations...
+Validating health check configuration in task definition: C:\Projects\Perfect-Match\infrastructure\task-definitions\backend-task-def-prepared.json
+  ✅ All health check configurations are valid
+Validating health check configuration in task definition: C:\Projects\Perfect-Match\infrastructure\task-definitions\frontend-task-def-prepared.json
+  ✅ All health check configurations are valid
+✅ All health check configurations are valid
+
+Resource Verification Summary:
+---------------------------
+IAM Roles:
+  ecsTaskExecutionRole ✅ Available
+  pairvaBackendTaskRole ✅ Available
+  pairvaFrontendTaskRole ✅ Available
+CloudWatch Log Groups:
+  /ecs/pairva-backend ✅ Available
+  /ecs/pairva-frontend ✅ Available
+ECR Repositories:
+  pairva-frontend ✅ Available
+  pairva-backend ✅ Available
+ECR Images (Version: 1.0.2):
+  pairva-frontend [tag: 1.0.2] ✅ Available
+  pairva-backend [tag: 1.0.2] ✅ Available
+ECS Cluster:
+  pairva-cluster ✅ Available
+Processed Task Definitions:
+  frontend ✅ Processed
+  backend ✅ Processed
+
+✅ All verifications passed successfully!
+
+Task definitions have been processed and saved. You can now run:
+.\infrastructure\scripts\Deploy-Production.ps1 -Version "1.0.2" -UseProcessedTaskDefs -Verbose
+
+Name                           Value
+----                           -----
+ECRRepositories                {[pairva-frontend, True], [pairva-backend, True]}
+ECRImages                      {[pairva-frontend, True], [pairva-backend, True]}
+IAMRoles                       {[ecsTaskExecutionRole, True], [pairvaBackendTaskRole, True], [pairvaFrontendTaskRole, True]}
+ServiceConfig                  {[frontend, True], [backend, True]}
+ProcessedFiles                 {[frontend, True], [backend, True]}
+NetworkConfig                  False
+ECSCluster                     {{,     "cluster": {,         "clusterArn": "arn:aws:ecs:us-east-1:039612856036:cluster/pairva-cluster",,         "clusterName": "pai… 
+LogGroups                      {[/ecs/pairva-backend, True], [/ecs/pairva-frontend, True]}
+Export-ModuleMember: C:\Projects\Perfect-Match\infrastructure\scripts\Update-TaskDefinitions.ps1:1312:1
+Line |
+1312 |  Export-ModuleMember -Function Update-TaskDefinitions
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | The Export-ModuleMember cmdlet can only be called from inside a module.

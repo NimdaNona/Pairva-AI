@@ -2,20 +2,4 @@
     "git.ignoreLimitWarning": true,
     "cline.modelSettings.o3Mini.reasoningEffort": "high",
     "typescript.tsserver.maxTsServerMemory": 16384,
-    "telemetry.enableCrashReporter": false,
-    "workbench.enableExperiments": false,
-    "files.maxMemoryForLargeFilesMB": 8192,
-    "editor.largeFileOptimizations": true,
-    "editor.minimap.enabled": false,
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-
-
-  "[markdown]": {
-    "editor.wordWrap": "on",
-    "editor.quickSuggestions": {
-      "comments": "off",
-      "strings": "off",
-      "other": "off"
-    }
-  }
 }

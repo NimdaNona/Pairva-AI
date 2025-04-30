@@ -19,7 +19,9 @@
         { "name": "NODE_ENV", "value": "production" },
         { "name": "PORT", "value": "3000" },
         { "name": "NEXT_PUBLIC_API_URL", "value": "https://api.pairva.ai" },
-        { "name": "NEXT_PUBLIC_FRONTEND_URL", "value": "https://www.pairva.ai" }
+        { "name": "NEXT_PUBLIC_FRONTEND_URL", "value": "https://www.pairva.ai" },
+        { "name": "LANG", "value": "en_US.UTF-8" },
+        { "name": "LC_ALL", "value": "en_US.UTF-8" }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
@@ -33,9 +35,9 @@
       "healthCheck": {
         "command": ["CMD-SHELL", "curl -f http://localhost:3000/health || exit 1"],
         "interval": 30,
-        "timeout": 5,
-        "retries": 3,
-        "startPeriod": 60
+        "timeout": 10,
+        "retries": 5,
+        "startPeriod": 120
       },
       "ulimits": [
         {
@@ -62,5 +64,7 @@
       "key": "Application",
       "value": "Pairva"
     }
-  ]
+  ],
+  "volumes": [],
+  "placementConstraints": []
 }

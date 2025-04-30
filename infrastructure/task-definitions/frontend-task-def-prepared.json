@@ -6,7 +6,7 @@
   "containerDefinitions": [
     {
       "name": "pairva-frontend",
-      "image": "039612856036.dkr.ecr.us-east-1.amazonaws.com/pairva-frontend:20250423-1",
+      "image": "039612856036.dkr.ecr.us-east-1.amazonaws.com/pairva-frontend:20250430-fix2",
       "essential": true,
       "portMappings": [
         {
@@ -16,10 +16,30 @@
         }
       ],
       "environment": [
-        { "name": "NODE_ENV", "value": "production" },
-        { "name": "PORT", "value": "3000" },
-        { "name": "NEXT_PUBLIC_API_URL", "value": "https://api.pairva.ai" },
-        { "name": "NEXT_PUBLIC_FRONTEND_URL", "value": "https://www.pairva.ai" }
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "name": "PORT",
+          "value": "3000"
+        },
+        {
+          "name": "NEXT_PUBLIC_API_URL",
+          "value": "https://api.pairva.ai"
+        },
+        {
+          "name": "NEXT_PUBLIC_FRONTEND_URL",
+          "value": "https://www.pairva.ai"
+        },
+        {
+          "name": "LANG",
+          "value": "en_US.UTF-8"
+        },
+        {
+          "name": "LC_ALL",
+          "value": "en_US.UTF-8"
+        }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
@@ -31,11 +51,14 @@
         }
       },
       "healthCheck": {
-        "command": ["CMD-SHELL", "curl -f http://localhost:3000/health || exit 1"],
+        "command": [
+          "CMD-SHELL",
+          "curl -f http://localhost:3000/health || exit 1"
+        ],
         "interval": 30,
-        "timeout": 5,
-        "retries": 3,
-        "startPeriod": 60
+        "timeout": 15,
+        "retries": 7,
+        "startPeriod": 180
       },
       "ulimits": [
         {
@@ -46,7 +69,9 @@
       ]
     }
   ],
-  "requiresCompatibilities": ["FARGATE"],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "cpu": "1024",
   "memory": "2048",
   "tags": [
@@ -62,5 +87,7 @@
       "key": "Application",
       "value": "Pairva"
     }
-  ]
+  ],
+  "volumes": [],
+  "placementConstraints": []
 }

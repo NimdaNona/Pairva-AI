@@ -32,7 +32,7 @@ export class AuthController {
     const tokens = await this.authService.generateTokens(req.user);
 
     // Redirect to frontend with tokens (or use a session-based approach)
-    const frontendUrl = this.configService.get('FRONTEND_URL') || 'http://localhost:3001';
+    const frontendUrl = this.configService.get('FRONTEND_URL') || 'http://localhost:3000';
     return res.redirect(`${frontendUrl}/auth/callback?access_token=${tokens.accessToken}&refresh_token=${tokens.refreshToken}`);
   }
 
